@@ -1,5 +1,5 @@
 {
-	"name": "mongo-manager",
+	"name": "mongo-dashboard",
 	"main": "src/server/index.ts",
 	"compatibility_date": "2025-02-14",
 	"compatibility_flags": ["nodejs_compat"],
@@ -15,8 +15,8 @@
 	"d1_databases": [
 		{
 			"binding": "D1_DATABASE",
-			"database_id": "7693dafb-6f8e-4f82-864a-be1f222d793d",
-			"database_name": "mongo-manager",
+			"database_id": "4f5495ca-70e3-4499-a88d-532434f8df66",
+			"database_name": "mongo-dashboard",
 			"migrations_dir": "./drizzle"
 		}
 	]
