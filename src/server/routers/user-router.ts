@@ -139,7 +139,7 @@ export const userRouter = j.router({
 		return c.json({
 			apiKey: dbUser?.aiApiKey || "",
 			baseUrl: dbUser?.aiBaseUrl || "",
-			model: dbUser?.aiModel || "gpt-4o-mini",
+			model: dbUser?.aiModel || "gpt-4.1",
 		});
 	}),
 }); 

@@ -26,7 +26,7 @@ export default function MongoDBSettingsPage() {
 	const [aiConfig, setAiConfig] = useState<AiConfig>({
 		apiKey: "",
 		baseUrl: "",
-		model: "gpt-4o-mini",
+		model: "gpt-4.1",
 	});
 	const [showAiApiKey, setShowAiApiKey] = useState(false);
 	const [aiTestResult, setAiTestResult] = useState<{
@@ -202,7 +202,7 @@ export default function MongoDBSettingsPage() {
 			setAiConfig({
 				apiKey: aiConfigData.apiKey || "",
 				baseUrl: aiConfigData.baseUrl || "",
-				model: aiConfigData.model || "gpt-4o-mini",
+				model: aiConfigData.model || "gpt-4.1",
 			});
 		}
 	}, [aiConfigData]);
@@ -415,7 +415,7 @@ export default function MongoDBSettingsPage() {
 									className="w-full rounded-md bg-black/50 px-4 py-3 text-base/6 text-zinc-100 ring-2 ring-transparent transition hover:bg-black/75 hover:ring-zinc-800 focus:bg-black/75 focus:ring-zinc-800 focus-visible:outline-none"
 								/>
 								<p className="text-xs text-zinc-400">
-									输入要使用的模型名称，例如: gpt-4.1、gpt-4o-mini 等
+									输入要使用的模型名称，例如: gpt-4.1、gpt-4.1 等
 								</p>
 							</div>
 						</div>

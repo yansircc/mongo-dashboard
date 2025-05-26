@@ -22,7 +22,7 @@ export const users = sqliteTable(
 		// AI 配置
 		aiApiKey: text("aiApiKey"), // AI API 密钥
 		aiBaseUrl: text("aiBaseUrl"), // AI API 基础 URL
-		aiModel: text("aiModel").default("gpt-4o-mini"), // AI 模型
+		aiModel: text("aiModel").default("gpt-4.1"), // AI 模型
 		createdAt: integer("createdAt", { mode: "timestamp" })
 			.default(sql`(cast((julianday('now') - 2440587.5)*86400000 as integer))`)
 			.notNull(),
