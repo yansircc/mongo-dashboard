@@ -93,8 +93,13 @@ export const mongodbRouter = j.router({
 					const adminDb = client.db().admin();
 					const result = await adminDb.listDatabases();
 					
-					console.log("成功获取数据库列表:", result.databases?.length || 0, "个数据库");
-					return c.superjson(result.databases || []);
+					// 过滤掉系统默认数据库
+					const filteredDatabases = (result.databases || []).filter(
+						db => !['admin', 'config', 'local'].includes(db.name)
+					);
+					
+					console.log("成功获取数据库列表:", filteredDatabases.length, "个数据库（已过滤系统数据库）");
+					return c.superjson(filteredDatabases);
 				} catch (adminError) {
 					// 如果没有 admin 权限，尝试列出当前连接字符串中指定的数据库
 					console.warn("无法访问 admin 数据库，尝试获取当前数据库:", adminError);
@@ -115,6 +120,12 @@ export const mongodbRouter = j.router({
 					await db.admin().ping();
 					
 					console.log("成功连接到数据库:", dbName);
+					
+					// 检查是否为系统数据库，如果是则不返回
+					if (['admin', 'config', 'local'].includes(dbName)) {
+						console.log("当前数据库为系统数据库，不返回");
+						return c.superjson([]);
+					}
 					
 					// 返回当前数据库信息
 					return c.superjson([{

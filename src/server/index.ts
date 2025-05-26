@@ -13,7 +13,10 @@ const api = j
 	.basePath("/api")
 	.use(
 		cors({
-			origin: ["http://localhost:3000", process.env.FRONTEND_URL || ""],
+			origin: [
+				"http://localhost:3000",
+				"https://mongo-dashboard-psi.vercel.app",
+			],
 			allowHeaders: [
 				"x-is-superjson",
 				"Authorization",
