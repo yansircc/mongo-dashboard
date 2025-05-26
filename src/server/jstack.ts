@@ -1,11 +1,4 @@
-import { createOpenAI } from "@ai-sdk/openai";
-import type {
-	Ai,
-	D1Database,
-	KVNamespace,
-	Queue,
-	R2Bucket,
-} from "@cloudflare/workers-types";
+import type { D1Database } from "@cloudflare/workers-types";
 import { drizzle } from "drizzle-orm/d1";
 import { env } from "hono/adapter";
 import { HTTPException } from "hono/http-exception";
@@ -18,10 +11,6 @@ import { jstack } from "jstack";
 export interface Env {
 	Bindings: {
 		D1_DATABASE: D1Database;
-		KV_NAMESPACE: KVNamespace;
-		AI: Ai;
-		R2_BUCKET: R2Bucket;
-		QUEUE: Queue;
 	};
 }
 
@@ -46,20 +35,11 @@ export const j = jstack.init<Env>();
  * Middleware definitions
  */
 const publicMiddleware = j.middleware(async ({ c, next }) => {
-	const { D1_DATABASE, KV_NAMESPACE, AI, R2_BUCKET, QUEUE, OPENAI_API_KEY } =
+	const { D1_DATABASE } =
 		env(c);
-
-	const openai = createOpenAI({
-		apiKey: OPENAI_API_KEY as string,
-	});
 
 	return await next({
 		db: drizzle(D1_DATABASE),
-		kv: KV_NAMESPACE,
-		cloudflareai: AI,
-		openai,
-		r2: R2_BUCKET,
-		queue: QUEUE,
 	});
 });
 

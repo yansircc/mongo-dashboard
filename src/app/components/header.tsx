@@ -13,8 +13,8 @@ import { navItems } from "../config/navigation";
 
 export const Header = () => {
 	return (
-		<header className="sticky top-0 z-50 w-full backdrop-blur-lg bg-zinc-950/80 border-b border-zinc-800/20 transition-all">
-			<div className="container mx-auto flex items-center justify-between h-16 px-4">
+		<header className="sticky top-0 z-50 w-full border-zinc-800/20 border-b bg-zinc-950/80 backdrop-blur-lg transition-all">
+			<div className="container mx-auto flex h-16 items-center justify-between px-4">
 				<div className="flex items-center gap-8">
 					<TextLogo />
 					<Nav />
@@ -25,7 +25,7 @@ export const Header = () => {
 						<SignInButton mode="modal">
 							<button
 								type="button"
-								className="px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white transition-colors rounded-md hover:bg-zinc-800/50"
+								className="rounded-md px-4 py-2 font-medium text-sm text-zinc-300 transition-colors hover:bg-zinc-800/50 hover:text-white"
 							>
 								登录
 							</button>
@@ -33,7 +33,7 @@ export const Header = () => {
 						<SignUpButton mode="modal">
 							<button
 								type="button"
-								className="px-4 py-2 text-sm font-medium bg-gradient-to-r from-zinc-200 to-zinc-300 hover:from-zinc-100 hover:to-zinc-200 text-zinc-900 rounded-md transition-all duration-200 shadow-sm hover:shadow"
+								className="rounded-md bg-gradient-to-r from-zinc-200 to-zinc-300 px-4 py-2 font-medium text-sm text-zinc-900 shadow-sm transition-all duration-200 hover:from-zinc-100 hover:to-zinc-200 hover:shadow"
 							>
 								注册
 							</button>
@@ -59,17 +59,17 @@ const Nav = () => {
 	const pathname = usePathname();
 
 	return (
-		<nav className="hidden md:flex items-center space-x-1">
+		<nav className="hidden items-center space-x-1 md:flex">
 			{navItems.map((item) => {
 				const isActive = pathname === item.href;
 				return (
 					<Link
 						key={item.href}
 						href={item.href}
-						className={`px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
+						className={`rounded-md px-3 py-2 font-medium text-sm transition-all duration-200 ${
 							isActive
 								? "bg-zinc-800/80 text-white"
-								: "text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/40"
+								: "text-zinc-400 hover:bg-zinc-800/40 hover:text-zinc-100"
 						}`}
 					>
 						{item.label}
@@ -83,7 +83,7 @@ const Nav = () => {
 const TextLogo = () => {
 	return (
 		<Link href="/" className="flex items-center space-x-2">
-			<span className="text-xl font-bold bg-gradient-to-r from-zinc-100 to-zinc-400 text-transparent bg-clip-text">
+			<span className="bg-gradient-to-r from-zinc-100 to-zinc-400 bg-clip-text font-bold text-transparent text-xl">
 				JStack
 			</span>
 		</Link>

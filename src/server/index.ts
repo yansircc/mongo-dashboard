@@ -31,12 +31,9 @@ const api = j
  * All routers in /server/routers should be added here manually.
  */
 const appRouter = j.mergeRouters(api, {
-	post: dynamic(() => import("./routers/post-router")),
-	file: dynamic(() => import("./routers/file-router")),
-	kv: dynamic(() => import("./routers/kv-router")),
+	mongodb: dynamic(() => import("./routers/mongodb-router")),
+	user: dynamic(() => import("./routers/user-router")),
 	ai: dynamic(() => import("./routers/ai-router")),
-	queue: dynamic(() => import("./routers/queue-router")),
-	auth: dynamic(() => import("./routers/auth-router")),
 });
 
 export type AppRouter = typeof appRouter;

@@ -1,5 +1,5 @@
 {
-	"name": "learn-jstack",
+	"name": "mongo-manager",
 	"main": "src/server/index.ts",
 	"compatibility_date": "2025-02-14",
 	"compatibility_flags": ["nodejs_compat"],
@@ -15,32 +15,9 @@
 	"d1_databases": [
 		{
 			"binding": "D1_DATABASE",
-			"database_id": "ede48dd3-2ac8-468c-bb80-a6578f307168",
-			"database_name": "learn-cf-worker",
+			"database_id": "7693dafb-6f8e-4f82-864a-be1f222d793d",
+			"database_name": "mongo-manager",
 			"migrations_dir": "./drizzle"
 		}
-	],
-	"kv_namespaces": [
-		{
-			"binding": "KV_NAMESPACE",
-			"id": "bd33039ef9df4beb8509fbc9297ce631"
-		}
-	],
-	"ai": {
-		"binding": "AI"
-	},
-	"r2_buckets": [
-		{
-			"binding": "R2_BUCKET",
-			"bucket_name": "learn-jstack"
-		}
-	],
-	"queues": {
-		"producers": [
-			{
-				"binding": "QUEUE",
-				"queue": "local-queues"
-			}
-		]
-	}
+	]
 }
